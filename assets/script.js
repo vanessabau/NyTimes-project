@@ -1,10 +1,16 @@
-alert("This is working");
-$("#search-button").on("click", function() {
-    //NYT Api query
+
+$("#search-button").on("click", function(event) {
+    event.preventDefault();
+    clearInterval();
     console.log(this);
-    var year;
-    var month;
-    var queryURL = "https://api.nytimes.com/svc/archive/v1/2019/1.json?api-key=8lDbBlloTPEqY4nZFBdkrGq6t6PMN7vu/" + year + "/" + month;
+    //NYT Api query
+    
+    var startYear = "2010";
+    var endYear = "2020";
+    var subject = "obama";
+    var sourcesNum = 5;
+    var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=whR9vKaMMAqHi8Y14STehdAAgj5duFIn" 
+    
     //Load data using get request with ajax format
     $.ajax({
       url: queryURL,
@@ -14,3 +20,5 @@ $("#search-button").on("click", function() {
       .then(function(response) {
       });
   });
+
+  
